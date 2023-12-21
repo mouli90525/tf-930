@@ -192,3 +192,21 @@ resource "aws_network_acl" "tf-ecomm-pvt-nacl" {
   }
 }
 
+
+
+
+
+# Create NACL asscoation 
+
+resource "aws_network_acl_association" "tf-ecomm-pub-nacl-asc-A" {
+  network_acl_id = aws_network_acl.tf-ecomm-pub-nacl.id
+  subnet_id      = aws_subnet.tf-ecomm-pub-sn-A.id
+}
+
+
+
+resource "aws_network_acl_association" "tf-ecomm-pub-nacl-asc-B" {
+  network_acl_id = aws_network_acl.tf-ecomm-pub-nacl.id
+  subnet_id      = aws_subnet.tf-ecomm-pub-sn-B.id
+}
+
