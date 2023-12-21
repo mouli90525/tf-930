@@ -112,3 +112,19 @@ resource "aws_route_table_association" "tf-ecomm-pub-asc-B" {
 }
 
 
+
+
+# create private assocations
+
+
+resource "aws_route_table_association" "tf-ecomm-pvt-asc-A" {
+  subnet_id      = aws_subnet.tf-ecomm-pvt-sn-A.id
+  route_table_id = aws_route_table.tf-ecomm-pvt-rt.id
+}
+
+
+resource "aws_route_table_association" "tf-ecomm-pvt-asc-B" {
+  subnet_id      = aws_subnet.tf-ecomm-pvt-sn-B.id
+  route_table_id = aws_route_table.tf-ecomm-pvt-rt.id
+}
+
