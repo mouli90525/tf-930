@@ -61,3 +61,22 @@ resource "aws_internet_gateway" "tf-ecomm-igw" {
     Name = "ecomm-internet-internet"
   }
 }
+
+
+
+
+#create public route
+
+resource "aws_route_table" "tf-ecomm-pub-rt" {
+  vpc_id = aws_vpc.tf-ecomm.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.tf-ecomm-igw.id
+  }
+
+ 
+  tags = {
+    Name = "ecomm-public-route-table"
+  }
+}
