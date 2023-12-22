@@ -38,3 +38,23 @@ resource "aws_security_group" "tf-ecomm-pub-sg" {
   }
 }
 
+
+
+
+
+#EC2 instance
+
+resource "aws_instance" "tf-ecomm-pub-ec2" {
+  ami           = "ami-07b36ea9852e986ad"
+  instance_type = "t2.micro"
+  subnet_id = aws_subnet.tf-ecomm-pub-sn-A.id
+  key_name = "Ter"
+  vpc_security_group_ids = [aws_security_group.tf-ecomm-pub-sg.id]
+  user_data = file("webapp.sh")  
+
+
+
+tags = {
+    Name = "ecomm-server"
+  }
+}
